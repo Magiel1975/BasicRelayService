@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27703.2026
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayApi", "src\RelayApi\RelayApi.csproj", "{732DCF04-84C6-4221-A678-090E25F4B2CF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelayApi.ConsoleApp", "src\RelayApi.ConsoleApp\RelayApi.ConsoleApp.csproj", "{5C24E644-1E56-40FC-AF08-ABDFF41697E1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{732DCF04-84C6-4221-A678-090E25F4B2CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{732DCF04-84C6-4221-A678-090E25F4B2CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{732DCF04-84C6-4221-A678-090E25F4B2CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{732DCF04-84C6-4221-A678-090E25F4B2CF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5C24E644-1E56-40FC-AF08-ABDFF41697E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C24E644-1E56-40FC-AF08-ABDFF41697E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C24E644-1E56-40FC-AF08-ABDFF41697E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C24E644-1E56-40FC-AF08-ABDFF41697E1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0AF66BE1-68CD-4F0F-8135-F0D62E54CBDE}
+	EndGlobalSection
+EndGlobal
