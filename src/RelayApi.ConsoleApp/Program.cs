@@ -10,17 +10,24 @@ namespace RelayApi.ConsoleApp
         {
             try
             {
-                using (var starter = new Starter())
+                using (var startup = new App_Start.Startup())
                 {
-                    starter.Start();
-                    string webApiUrl = ConfigurationManager.AppSettings.Get("WebApiUrl");
-                    System.Diagnostics.Process.Start($@"{webApiUrl}/swagger/ui/index");
-                    Console.WriteLine($@"Process Started and hosted at {webApiUrl}");
-                    Console.WriteLine("Press Enter key to exit and stop the Process.");
-                    Console.ReadLine();
-                    Console.WriteLine("Stopping the Process...");
-                    starter.Stop();
-                    Thread.Sleep(500);
+                    startup.LaunchWebApi();
+                    using (var starter = new Starter())
+                    {
+                        starter.Start();
+
+                        string webApiUrl = ConfigurationManager.AppSettings.Get("WebApiUrl");
+                        System.Diagnostics.Process.Start($@"{webApiUrl}/swagger/ui/index");
+
+                        Console.WriteLine($@"Process Started and hosted at {webApiUrl}");
+                        Console.WriteLine("Press Enter key to exit and stop the Process.");
+                        Console.ReadLine();
+                        Console.WriteLine("Stopping the Process...");
+
+                        starter.Stop();
+                        Thread.Sleep(500);
+                    }
                 }
             }
             catch (Exception ex)

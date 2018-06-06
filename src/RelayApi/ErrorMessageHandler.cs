@@ -9,7 +9,7 @@ namespace RelayApi
 {
     public class ErrorMessageHandler : IErrorMessageHandler
     {
-        private const int MaxErrorCount = 5;
+        private const int MaxErrorCount = 10;
         private int counter;
         private readonly ConcurrentDictionary<int, ErrorMessage> errors;
 

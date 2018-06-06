@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using RelayApi.Formatters;
 using System.Web.Http;
 
 namespace RelayApi
@@ -9,9 +7,8 @@ namespace RelayApi
     {
         public static void Register(HttpConfiguration config)
         {
-            // Web API configuration and services
+            SwaggerConfig.Register(config);
 
-            // Web API routes
             config.MapHttpAttributeRoutes();
 
             config.Routes.MapHttpRoute(
@@ -19,6 +16,8 @@ namespace RelayApi
                 routeTemplate: "api/{controller}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+            config.Formatters.Add(new PlainTextFormatter());
         }
     }
 }

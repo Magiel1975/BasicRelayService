@@ -1,32 +1,54 @@
-﻿using System.Web.Http;
+﻿using System;
+using System.Configuration;
+using System.Web.Http;
+using Microsoft.Owin.Hosting;
 using Owin;
-using RelayApi.Formatters;
+
+[assembly: WebActivatorEx.PreApplicationStartMethod(typeof(RelayApi.App_Start.Startup), "StartProcess")]
 
 namespace RelayApi.App_Start
 {
-    public class Startup
+    public class Startup : IDisposable
     {
+        private IDisposable webApi;
+        private static Starter starter;
+
         public void Configuration(IAppBuilder app)
         {
-            // Configure Web API for self-host. 
             var config = new HttpConfiguration
             {
-                DependencyResolver = new DependencyResolver()
+                DependencyResolver = new DependencyResolver(),
             };
 
-            SwaggerConfig.Register(config);
-
-            config.MapHttpAttributeRoutes();
-
-            config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
-            );
-
-            config.Formatters.Add(new PlainTextFormatter());
-
+            WebApiConfig.Register(config);
             app.UseWebApi(config);
+        }
+
+        public void Dispose()
+        {
+            if (webApi != null)
+            {
+                webApi.Dispose();
+                webApi = null;
+            }
+            if (starter != null)
+            {
+                starter.Dispose();
+                starter = null;
+            }
+            GC.SuppressFinalize(this);
+        }
+
+        public void LaunchWebApi()
+        {
+            string webApiUrl = ConfigurationManager.AppSettings.Get("WebApiUrl");
+            webApi = WebApp.Start<Startup>(webApiUrl);
+        }
+
+        public static void StartProcess()
+        {
+            starter = new Starter();
+            starter.Start();
         }
     }
 }

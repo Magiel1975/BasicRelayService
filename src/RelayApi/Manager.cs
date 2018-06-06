@@ -37,7 +37,7 @@ namespace RelayApi
                 catch (Exception ex)
                 {
                     errorHandler.StoreError(ex, null);
-                    Thread.Sleep(10000);
+                    Thread.Sleep(5000);
                 }
             }
         }
